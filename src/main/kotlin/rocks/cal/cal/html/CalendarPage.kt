@@ -3,6 +3,7 @@ package rocks.cal.cal.html
 import kotlinx.html.*
 import rocks.cal.cal.calendar.domain.Day
 import rocks.cal.cal.calendar.domain.Month
+import rocks.cal.cal.calendar.domain.Week
 import rocks.cal.cal.calendar.domain.Year
 
 fun calendarPage(year: Year): String {
@@ -28,13 +29,20 @@ private fun DIV.monthSection(month: Month) =
                 +month.month
             }
 
-            div("month__days") {
-                month.days.map (::daySection)
+            table("month__days") {
+                tbody {
+                    month.weeks.map (::weekSection)
+                }
             }
         }
 
-private fun DIV.daySection(day: Day?) =
-        div("day") {
+private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
+        tr {
+            week.value.days.map (::daySection)
+        }
+
+private fun TR.daySection(day: Day?) =
+        td("day") {
             if (day == null) {
                 br
             } else {
