@@ -29,23 +29,33 @@ private fun DIV.monthSection(month: Month) =
                 +month.month
             }
 
-            table("month__days") {
+            table("month__weeks") {
                 tbody {
+                    tr {
+                        td { +"" }
+                        days.map (::dayNameSection)
+                    }
                     month.weeks.map (::weekSection)
                 }
             }
         }
 
 private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
-        tr {
+        tr("week") {
+            td {
+                +week.key.toString()
+            }
             week.value.days.map (::daySection)
         }
 
-private fun TR.daySection(day: Day?) =
-        td("day") {
-            if (day == null) {
-                br
-            } else {
-                + day.date.toString()
-            }
+private fun TR.dayNameSection(day: String) =
+        td("month__day-name") {
+            +day
         }
+
+private fun TR.daySection(day: Day?) =
+        td("week_day") {
+            +(day?.date?.toString() ?: "")
+        }
+
+private val days = listOf("Ma", "Ti", "On", "To", "Fr", "Lø", "Sø")
