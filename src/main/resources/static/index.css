@@ -3,3 +3,20 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.year__title {
+    text-align: center;
+}
+
+.year__months {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.month {
+    width: 25%;
+}
+
+.month__title {
+    text-align: center;
+}
