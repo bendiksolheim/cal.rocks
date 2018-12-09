@@ -17,12 +17,6 @@ class CalendarService {
                 val m = Month.days.modify(month) {it + Day(date.toString())}
                 Year.months.modify(newYear) {it.dropLast(1) + m}
             }
-
-    private fun datesForYear(year: Int): List<LocalDate> {
-        val first = LocalDate.of(year, 1, 1)
-        val last = LocalDate.of(year, 12, 31)
-        return first.datesUntil(last.plusDays(1)).collect(Collectors.toList())
-    }
 }
 
 private fun monthName(date: LocalDate): String =
@@ -36,4 +30,10 @@ private fun yearAndMonth(year: Year, date: LocalDate): Pair<Year, Month> {
     } else {
         Pair(year, month)
     }
+}
+
+private fun datesForYear(year: Int): List<LocalDate> {
+    val first = LocalDate.of(year, 1, 1)
+    val last = LocalDate.of(year, 12, 31)
+    return first.datesUntil(last.plusDays(1)).collect(Collectors.toList())
 }
