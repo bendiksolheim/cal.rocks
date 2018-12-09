@@ -14,7 +14,7 @@ class CalendarService {
         datesForYear(year)
             .fold(Year(year, listOf())) { aYear, date ->
                 val (newYear, month) = yearAndMonth(aYear, date)
-                val m = Month.days.modify(month) {it + Day(date.toString())}
+                val m = Month.days.modify(month) {it + Day(date.dayOfMonth)}
                 Year.months.modify(newYear) {it.dropLast(1) + m}
             }
 }

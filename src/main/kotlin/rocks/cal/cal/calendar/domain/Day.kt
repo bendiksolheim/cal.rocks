@@ -3,6 +3,6 @@ package rocks.cal.cal.calendar.domain
 import arrow.optics.optics
 
 @optics
-data class Day(val date: String) {
+data class Day(val date: Int) {
     companion object
 }
