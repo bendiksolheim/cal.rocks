@@ -13,7 +13,7 @@ fun calendarPage(year: Year): String {
 
 private fun DIV.yearSection(year: Year) =
         div("year") {
-            div("year__title") {
+            h1("year__title") {
                 +year.year.toString()
             }
 
@@ -33,7 +33,11 @@ private fun DIV.monthSection(month: Month) =
             }
         }
 
-private fun DIV.daySection(day: Day) =
+private fun DIV.daySection(day: Day?) =
         div("day") {
-            +day.date.toString()
+            if (day == null) {
+                br
+            } else {
+                + day.date.toString()
+            }
         }

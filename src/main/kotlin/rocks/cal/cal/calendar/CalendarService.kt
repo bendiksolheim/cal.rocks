@@ -25,8 +25,9 @@ private fun monthName(date: LocalDate): String =
 private fun yearAndMonth(year: Year, date: LocalDate): Pair<Year, Month> {
     val month = year.months.elementAtOrNull(date.monthValue - 1)
     return if (month == null) {
-        val newYear = Year.months.modify(year) { it + Month(monthName(date), listOf()) }
-        Pair(newYear, newYear.months.last())
+        val newMonth = Month(monthName(date), IntRange(1, date.dayOfWeek.value - 1).map { null })
+        val newYear = Year.months.modify(year) { it + newMonth}
+        Pair(newYear, newMonth)
     } else {
         Pair(year, month)
     }
