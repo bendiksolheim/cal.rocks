@@ -31,7 +31,7 @@ private fun DIV.monthSection(month: Month) =
 
             table("month__weeks") {
                 tbody {
-                    tr {
+                    tr("month__days") {
                         td { +"" }
                         days.map (::dayNameSection)
                     }
@@ -42,7 +42,7 @@ private fun DIV.monthSection(month: Month) =
 
 private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
         tr("week") {
-            td {
+            td("week__number") {
                 +week.key.toString()
             }
             week.value.days.map (::daySection)
@@ -54,7 +54,7 @@ private fun TR.dayNameSection(day: String) =
         }
 
 private fun TR.daySection(day: Day?) =
-        td("week_day") {
+        td("week__day") {
             +(day?.date?.toString() ?: "")
         }
 
