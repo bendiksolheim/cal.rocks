@@ -16,8 +16,8 @@ class CalendarService {
             .fold(Year(year, listOf())) { aYear, date ->
                 val (newYear, month) = yearAndMonth(aYear, date)
                 val (newMonth, week) = monthAndWeek(month, date)
-                val newWeek = Week.days.modify(week) { it + Day(date.dayOfMonth) }
                 val weekNumber = date.get(weekNumber)
+                val newWeek = Week.days.modify(week) { it + Day(date.dayOfMonth) }
                 val m = Month.weeks.modify(newMonth) {it.minus(weekNumber) + Pair(weekNumber, newWeek)}
                 Year.months.modify(newYear) {it.dropLast(1) + m}
             }
@@ -40,7 +40,7 @@ private fun monthAndWeek(month: Month, date: LocalDate): Pair<Month, Week> {
     val week = month.weeks[date.get(weekNumber)]
     return if (week == null) {
         val weekNumber = date.get(weekNumber)
-        val newWeek = Week(weekNumber, IntRange(1, date.dayOfWeek.value - 1).map { null })
+        val newWeek = Week(weekNumber, listOf())
         val newMonth = Month.weeks.modify(month) { it + Pair(weekNumber, newWeek) }
         Pair(newMonth, newWeek)
     } else {

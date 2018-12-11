@@ -45,6 +45,9 @@ private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
             td("week__number") {
                 +week.key.toString()
             }
+            if (week.value.days.first() == Day(1)) {
+                IntRange(0, 6 - week.value.days.size).map (::emptyDaySection)
+            }
             week.value.days.map (::daySection)
         }
 
@@ -53,9 +56,14 @@ private fun TR.dayNameSection(day: String) =
             +day
         }
 
-private fun TR.daySection(day: Day?) =
+private fun TR.emptyDaySection(unused: Int) =
+        td("week__day week__day--empty") {
+            +""
+        }
+
+private fun TR.daySection(day: Day) =
         td("week__day") {
-            +(day?.date?.toString() ?: "")
+            +day.date.toString()
         }
 
 private val days = listOf("Ma", "Ti", "On", "To", "Fr", "Lø", "Sø")
