@@ -49,6 +49,9 @@ private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
                 IntRange(0, 6 - week.value.days.size).map (::emptyDaySection)
             }
             week.value.days.map (::daySection)
+            if (week.value.days.size != 7 && week.value.days.first() != Day(1)) {
+                IntRange(0, 6 - week.value.days.size).map (::emptyDaySection)
+            }
         }
 
 private fun TR.dayNameSection(day: String) =
