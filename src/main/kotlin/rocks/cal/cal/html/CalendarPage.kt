@@ -29,20 +29,18 @@ private fun DIV.monthSection(month: Month) =
                 +month.month
             }
 
-            table("month__weeks") {
-                tbody {
-                    tr("month__days") {
-                        td { +"" }
-                        days.map (::dayNameSection)
-                    }
-                    month.weeks.map (::weekSection)
+            div("month__weeks") {
+                div("month__days") {
+                    div("month__spacer") { +"" }
+                    days.map (::dayNameSection)
                 }
+                month.weeks.map (::weekSection)
             }
         }
 
-private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
-        tr("week") {
-            td("week__number") {
+private fun DIV.weekSection(week: Map.Entry<Int, Week>) =
+        div("week") {
+            div("week__number") {
                 +week.key.toString()
             }
             if (week.value.days.first() == Day(1)) {
@@ -54,20 +52,23 @@ private fun TBODY.weekSection(week: Map.Entry<Int, Week>) =
             }
         }
 
-private fun TR.dayNameSection(day: String) =
-        td("month__day-name") {
+private fun DIV.dayNameSection(day: String) =
+        div("month__day-name") {
             +day
         }
 
-private fun TR.emptyDaySection(unused: Int) =
-        td("week__day week__day--empty") {
+private fun DIV.emptyDaySection(unused: Int) =
+        div("week__day week__day--empty") {
             +""
         }
 
-private fun TR.daySection(day: Day) =
-        td("week__day") {
+private fun DIV.daySection(day: Day) =
+        div("week__day day") {
             attributes["data-day"] = day.date.toString()
-            +day.date.toString()
+            div("day__date") {
+                +day.date.toString()
+            }
+            div("day__background")
         }
 
 private val days = listOf("Ma", "Ti", "On", "To", "Fr", "Lø", "Sø")
