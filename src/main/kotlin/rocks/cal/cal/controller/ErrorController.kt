@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class ErrorController: ErrorController {
-    override fun getErrorPath(): String {
-        return "/error"
-    }
+    override fun getErrorPath() = "/error"
 
     @GetMapping("/error")
     fun error() = "What?"
