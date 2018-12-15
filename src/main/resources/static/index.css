@@ -27,23 +27,30 @@ body {
 }
 
 .month {
+    margin-bottom: 30px;
     width: 25%;
 }
 
 .month__title {
+    font-size: 1.2rem;
     text-align: center;
 }
 
 .month__weeks {
     border-collapse: collapse;
+    left: -19px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .month__day-name {
+    color: #262626;
     font-size: .8rem;
     padding: 10px;
 }
 
 .week__number {
+    color: #262626;
     font-size: .8rem;
     padding: 10px;
     text-align: right;
@@ -52,6 +59,20 @@ body {
 
 .week__day {
     background: #323441;
+    color: #8d8fa0;
     padding: 10px;
+    position: relative;
     text-align: right;
+}
+
+.week__day:hover:before {
+    background: #8d8fa0;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
