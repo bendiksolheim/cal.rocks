@@ -66,11 +66,14 @@ body {
 }
 
 .week__day:hover:before {
+    align-items: center;
     background: #8d8fa0;
     border-radius: 100%;
-    content: '';
-    display: block;
+    color: #323441;
+    content: attr(data-day);
+    display: flex;
     height: 100%;
+    justify-content: center;
     left: 0;
     position: absolute;
     top: 0;

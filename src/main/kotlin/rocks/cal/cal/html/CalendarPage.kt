@@ -66,6 +66,7 @@ private fun TR.emptyDaySection(unused: Int) =
 
 private fun TR.daySection(day: Day) =
         td("week__day") {
+            attributes["data-day"] = day.date.toString()
             +day.date.toString()
         }
 
