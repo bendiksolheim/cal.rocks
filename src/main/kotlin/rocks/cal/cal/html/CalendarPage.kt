@@ -77,6 +77,6 @@ private fun DIV.daySection(day: Day) =
 private fun dayClass(day: Day) =
         day.holiday
                 ?.let { "week__day day day--holiday" }
-                ?: "week__day day day--holiday"
+                ?: "week__day day"
 
 private val days = listOf("Ma", "Ti", "On", "To", "Fr", "Lø", "Sø")
