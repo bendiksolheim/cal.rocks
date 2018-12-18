@@ -29,7 +29,24 @@ body {
 .month {
     margin-bottom: 30px;
     text-align: center;
-    width: 25%;
+}
+
+@media (min-width: 660px) {
+    .month {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .month {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .month {
+        width: 25%;
+    }
 }
 
 .month__title {
@@ -98,6 +115,7 @@ body {
 }
 
 .day__background {
+    transition: opacity .2s ease-in-out;
     background: #5a5c66;
     border-radius: 100%;
     color: #323441;
