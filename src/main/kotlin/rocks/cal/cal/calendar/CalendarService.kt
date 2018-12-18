@@ -1,5 +1,6 @@
 package rocks.cal.cal.calendar
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import rocks.cal.cal.calendar.domain.*
 import java.time.LocalDate
@@ -9,7 +10,8 @@ import java.util.*
 import java.util.stream.Collectors
 
 @Service
-class CalendarService {
+class CalendarService
+@Autowired constructor(private val holidayService: HolidayService){
 
     fun get(year: Int) =
         datesForYear(year)
@@ -17,7 +19,7 @@ class CalendarService {
                 val (newYear, month) = yearAndMonth(aYear, date)
                 val (newMonth, week) = monthAndWeek(month, date)
                 val weekNumber = date.get(weekNumber)
-                val newWeek = Week.days.modify(week) { it + Day(date.dayOfMonth) }
+                val newWeek = Week.days.modify(week) { it + Day(date.dayOfMonth, holidayService.isHoliday(date)) }
                 val m = Month.weeks.modify(newMonth) {it.minus(weekNumber) + Pair(weekNumber, newWeek)}
                 Year.months.modify(newYear) {it.dropLast(1) + m}
             }
