@@ -24,8 +24,9 @@ class HolidayService {
         val whitSunday = easterSunday.plusDays(49)
         val whitMonday = easterSunday.plusDays(50)
 
-        return mutableMapOf(
+        return mapOf(
                 Pair(LocalDate.of(year, 1, 1), "Første nyttårsdag"),
+                Pair(LocalDate.of(year, 5, 1), "Arbeidernes dag"),
                 Pair(maundyThursday, "Skjærtorsdag"),
                 Pair(goodFriday, "Langfredag"),
                 Pair(easterSunday, "Første påskedag"),
