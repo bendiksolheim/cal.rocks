@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background: #494B58;
+    background: #0D0F12;
     margin: 0;
     padding: 0;
 }
@@ -18,6 +18,7 @@ body {
 }
 
 .year__title {
+    color: #FFFFFF;
     text-align: center;
 }
 
@@ -50,6 +51,7 @@ body {
 }
 
 .month__title {
+    color: #FFFFFF;
     font-size: 1.2rem;
     text-align: center;
 }
@@ -95,19 +97,24 @@ body {
 }
 
 .week__day {
-    background: #323441;
     height: 40px;
     width: 40px;
 }
 
 .day {
     align-items: center;
-    color: #8d8fa0;
+    color: #FFFFFF;
     display: flex;
     height: 40px;
     justify-content: center;
     position: relative;
     width: 40px;
+}
+
+.day--holiday {
+    background: #E56E92;
+    border-radius: 100%;
+    color: #0D0F12;
 }
 
 .day__date {
