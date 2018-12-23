@@ -1,10 +1,7 @@
 package rocks.cal.cal.html
 
 import kotlinx.html.*
-import rocks.cal.cal.calendar.domain.Day
-import rocks.cal.cal.calendar.domain.Month
-import rocks.cal.cal.calendar.domain.Week
-import rocks.cal.cal.calendar.domain.Year
+import rocks.cal.cal.calendar.domain.*
 
 fun calendarPage(year: Year, today: Pair<Int, Int>): String {
     return page {
@@ -65,8 +62,8 @@ private fun DIV.emptyDaySection(unused: Int) =
 private fun DIV.daySection(day: Day, today: Boolean) =
         div(dayClass(day, today)) {
             attributes["data-day"] = day.date.toString()
-            if (day.holiday != null) {
-                attributes["data-holiday"] = day.holiday
+            if (day.type is Holiday) {
+                attributes["data-holiday"] = day.type.name
             }
             div("day__date") {
                 +day.date.toString()
@@ -77,7 +74,7 @@ private fun DIV.daySection(day: Day, today: Boolean) =
 private fun dayClass(day: Day, today: Boolean) = listOf(
                 Pair("week__day", true),
                 Pair("day", true),
-                Pair("day--holiday", day.holiday != null),
+                Pair("day--holiday", day.type is Holiday),
                 Pair("day--today", today)
             ).filter { it.second }
             .joinToString(" ") { it.first }

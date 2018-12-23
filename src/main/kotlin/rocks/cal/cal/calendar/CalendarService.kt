@@ -3,6 +3,7 @@ package rocks.cal.cal.calendar
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import rocks.cal.cal.calendar.domain.*
+import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.time.temporal.WeekFields
@@ -19,7 +20,7 @@ class CalendarService
                 val (newYear, month) = yearAndMonth(aYear, date)
                 val (newMonth, week) = monthAndWeek(month, date)
                 val weekNumber = date.get(weekNumber)
-                val newWeek = Week.days.modify(week) { it + Day(date.dayOfMonth, holidayService.isHoliday(date)) }
+                val newWeek = Week.days.modify(week) { it + Day(date.dayOfMonth, dayType(date, holidayService)) }
                 val m = Month.weeks.modify(newMonth) {it.minus(weekNumber) + Pair(weekNumber, newWeek)}
                 Year.months.modify(newYear) {it.dropLast(1) + m}
             }
@@ -57,3 +58,14 @@ private fun datesForYear(year: Int): List<LocalDate> {
 }
 
 val weekNumber = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear()
+
+private fun dayType(date: LocalDate, holidayService: HolidayService): DayType =
+    holidayService.isHoliday(date)
+            ?.let { Holiday(it) }
+            ?: if (date.dayOfWeek in weekend) {
+                Weekend
+            } else {
+                Normal
+}
+
+private val weekend = listOf(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY)
