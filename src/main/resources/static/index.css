@@ -111,18 +111,7 @@ body {
     width: 40px;
 }
 
-.day--holiday {
-    background: #E56E92;
-    border-radius: 100%;
-    color: #0D0F12;
-}
-
-.day__date {
-    z-index: 10;
-}
-
 .day__background {
-    transition: opacity .2s ease-in-out;
     background: #5a5c66;
     border-radius: 100%;
     color: #323441;
@@ -132,10 +121,53 @@ body {
     opacity: 0;
     position: absolute;
     top: 5px;
+    transition: opacity .2s ease-in-out;
     width: 30px;
     z-index: 5;
 }
 
+.day--today {
+    color: #0D0F12;
+}
+
+.day--holiday .day__background {
+    background: #E56E92;
+    border-radius: 100%;
+    color: #0D0F12;
+    opacity: 1;
+}
+
+.day--today .day__background {
+    background: #FFFFFF;
+    border-radius: 100%;
+    opacity: 1;
+}
+
+.day__date {
+    z-index: 10;
+}
+
 .day:hover .day__background {
+    opacity: 1;
+}
+
+.day--holiday:before {
+    background: #E56E92;
+    box-shadow: 0 0 3px #0D0F12;
+    border-radius: 5px;
+    color: #0D0F12;
+    content: attr(data-holiday);
+    display: block;
+    opacity: 0;
+    padding: 5px;
+    position: absolute;
+    pointer-events: none;
+    top: -100%;
+    transition: opacity .2s ease-in-out;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.day--holiday:hover:before {
     opacity: 1;
 }
