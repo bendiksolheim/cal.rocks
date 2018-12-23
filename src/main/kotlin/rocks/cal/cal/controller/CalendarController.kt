@@ -13,11 +13,16 @@ class CalendarController
 @Autowired constructor(private val calendarService: CalendarService){
 
     @GetMapping("/")
-    fun index(): String = calendarPage(calendarService.get(LocalDate.now().year))
+    fun index(): String = calendarPage(calendarService.get(LocalDate.now().year), today())
 
     @GetMapping("/{year}")
     fun year(@PathVariable year: String) =
             year.toIntOrNull()
-                ?.let {calendarPage(calendarService.get(it))}
+                ?.let {calendarPage(calendarService.get(it), today())}
                 ?: "$year is not a year, is it?"
+}
+
+private fun today(): Pair<Int, Int> {
+    val today = LocalDate.now()
+    return Pair(today.monthValue, today.dayOfMonth)
 }
