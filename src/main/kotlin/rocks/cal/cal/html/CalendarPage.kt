@@ -75,6 +75,7 @@ private fun dayClass(day: Day, today: Boolean) = listOf(
                 Pair("week__day", true),
                 Pair("day", true),
                 Pair("day--holiday", day.type is Holiday),
+                Pair("day--weekend", day.type is Weekend),
                 Pair("day--today", today)
             ).filter { it.second }
             .joinToString(" ") { it.first }

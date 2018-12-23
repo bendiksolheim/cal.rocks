@@ -126,6 +126,10 @@ body {
     z-index: 5;
 }
 
+.day--weekend {
+    color: #262626;
+}
+
 .day--today {
     color: #0D0F12;
 }
