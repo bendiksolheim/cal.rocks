@@ -4,11 +4,11 @@ import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 import rocks.cal.cal.CalApplication
 
-fun page(_body: DIV.() -> Unit): String =
+fun page(title: String, _body: DIV.() -> Unit): String =
     StringBuilder().appendln("<!DOCTYPE html>").appendHTML(prettyPrint = false)
         .html {
             head {
-                title("Hello, world")
+                title(title)
                 style { +css() }
             }
 

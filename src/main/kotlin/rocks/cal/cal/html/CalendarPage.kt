@@ -4,7 +4,7 @@ import kotlinx.html.*
 import rocks.cal.cal.calendar.domain.*
 
 fun calendarPage(year: Year, today: Pair<Int, Int>): String {
-    return page {
+    return page(year.year.toString()) {
         yearSection(year, today)
     }
 }
