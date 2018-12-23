@@ -134,10 +134,13 @@ body {
     color: #0D0F12;
 }
 
+.day--holiday {
+    color: #0D0F12;
+}
+
 .day--holiday .day__background {
     background: #E56E92;
     border-radius: 100%;
-    color: #0D0F12;
     opacity: 1;
 }
 
