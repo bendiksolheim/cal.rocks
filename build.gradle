@@ -58,3 +58,5 @@ dependencies {
 	kapt    "io.arrow-kt:arrow-annotations-processor:$arrow_version"
 	implementation "io.arrow-kt:arrow-optics:$arrow_version"
 }
+
+bootRun.environment 'JAVA_OPTS' '-Duser.timezone=Europe/Oslo -Duser.country=NO -Duser.language=no'
