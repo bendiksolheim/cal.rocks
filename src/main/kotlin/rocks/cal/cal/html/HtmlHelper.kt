@@ -10,6 +10,7 @@ fun page(title: String, _body: DIV.() -> Unit): String =
             head {
                 title(title)
                 style { +css() }
+                meta(name = "viewport", content = "width=device-width, initial-scale=1")
             }
 
             body {
