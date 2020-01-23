@@ -9,6 +9,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher
 class WebSecurityConfig: WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
+        http.csrf().disable()
         http.requiresChannel()
                 .requestMatchers(RequestMatcher { it.getHeader("X-Forwarded-Proto") != null })
                 .requiresSecure()

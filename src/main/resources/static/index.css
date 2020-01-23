@@ -5,6 +5,7 @@ html {
 
 body {
     background: #0D0F12;
+    color: #FFF;
     margin: 0;
     padding: 0;
 }
@@ -17,9 +18,26 @@ body {
     padding: 20px;
 }
 
+.year__heading {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.year__previous-link {
+    color: #FFF;
+    text-decoration: none;
+}
+
 .year__title {
-    color: #FFFFFF;
+    color: #FFF;
+    margin: 1em 20px;
     text-align: center;
+}
+
+.year__next-link {
+    color: #FFF;
+    text-decoration: none;
 }
 
 .year__months {
@@ -113,13 +131,12 @@ body {
 }
 
 .day__background {
-    background: #5a5c66;
+    background: transparent;
     border-radius: 100%;
     color: #323441;
     display: block;
     left: 5px;
     height: 30px;
-    opacity: 0;
     position: absolute;
     top: 5px;
     transition: opacity .2s ease-in-out;
@@ -152,19 +169,17 @@ body {
 }
 
 .day__date {
+    color: unset;
+    text-decoration: none;
     z-index: 10;
 }
 
-.day:hover .day__background {
-    opacity: 1;
-}
-
-.day--holiday:before {
-    background: #E56E92;
+.day--title:before {
+    background: #FFFFFF;
     box-shadow: 0 0 3px #0D0F12;
     border-radius: 5px;
     color: #0D0F12;
-    content: attr(data-holiday);
+    content: attr(data-title);
     display: block;
     opacity: 0;
     padding: 5px;
@@ -176,6 +191,6 @@ body {
     z-index: 10;
 }
 
-.day--holiday:hover:before {
+.day--title:hover:before {
     opacity: 1;
 }
