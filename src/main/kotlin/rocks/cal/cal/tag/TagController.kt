@@ -13,7 +13,7 @@ class TagController
 
     @GetMapping
     fun list(): List<Tag> =
-            tags.findAll().toList()
+            tags.findAll()
 
     @PostMapping(consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun add(@RequestBody tag: NewTag): Tag =

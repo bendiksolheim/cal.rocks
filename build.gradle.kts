@@ -30,7 +30,7 @@ val arrow_version = "0.8.1"
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.11")
@@ -44,5 +44,10 @@ dependencies {
 	kapt("io.arrow-kt:arrow-annotations-processor:$arrow_version")
 	implementation("io.arrow-kt:arrow-optics:$arrow_version")
 
-	runtime("org.postgresql:postgresql")
+	implementation("org.jdbi:jdbi3-spring4:3.12.2")
+	implementation("org.jdbi:jdbi3-sqlobject:3.12.2")
+	implementation("org.jdbi:jdbi3-postgres:3.12.2")
+	implementation("org.jdbi:jdbi3-kotlin:3.12.2")
+	implementation("org.jdbi:jdbi3-kotlin-sqlobject:3.12.2")
+	runtimeOnly("org.postgresql:postgresql")
 }
