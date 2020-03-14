@@ -17,18 +17,19 @@ class CalendarService
         private val holidayService: HolidayService,
         private val events: EventRepository){
 
-    fun get(year: Int): Year =
-        datesForYear(year)
-            .fold(Year(year, listOf())) { aYear, date ->
-                val events = events.forYear(aYear.year)
-                        .associateBy { it.date }
-                val (newYear, month) = yearAndMonth(aYear, date)
-                val (newMonth, week) = monthAndWeek(month, date)
-                val weekNumber = date.get(weekNumber)
-                val newWeek = Week.days.modify(week) { it + Day(date, dayType(date, holidayService), events[date]?.tag) }
-                val m = Month.weeks.modify(newMonth) {it.minus(weekNumber) + Pair(weekNumber, newWeek)}
-                Year.months.modify(newYear) {it.dropLast(1) + m}
-            }
+    fun get(year: Int): Year {
+        val events = events.forYear(year)
+                .associateBy { it.date }
+        return datesForYear(year)
+                .fold(Year(year, listOf())) { aYear, date ->
+                    val (newYear, month) = yearAndMonth(aYear, date)
+                    val (newMonth, week) = monthAndWeek(month, date)
+                    val weekNumber = date.get(weekNumber)
+                    val newWeek = Week.days.modify(week) { it + Day(date, dayType(date, holidayService), events[date]?.tag) }
+                    val m = Month.weeks.modify(newMonth) { it.minus(weekNumber) + Pair(weekNumber, newWeek) }
+                    Year.months.modify(newYear) { it.dropLast(1) + m }
+                }
+    }
 }
 
 private fun monthName(date: LocalDate): String =
