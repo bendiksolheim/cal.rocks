@@ -201,3 +201,58 @@ body {
 .day--title:hover:before {
     opacity: 1;
 }
+
+.new-event {
+    align-items: center;
+    display: flex;
+    height: calc(100vh - 40px);
+    justify-content: center;
+    text-align: center;
+}
+
+.new-event__form {
+    margin-top: -100px;
+}
+
+.new-event__date {
+    margin-bottom: 20px;
+}
+
+.new-event__date-label {
+    display: none;
+}
+
+.new-event__date-input {
+    background: transparent;
+    border: 0;
+    color: var(--color-white);
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.new-event__tags {
+    display: inline-block;
+}
+
+.new-event__tags-label {
+    display: none;
+}
+
+.new-event__tags-input {
+    border-radius: 0;
+    border: 0;
+    font-size: inherit;
+    margin-right: 20px;
+    padding: 4px 10px;
+}
+
+.new-event__save {
+    background: var(--color-primary);
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 1rem;
+}
