@@ -1,11 +1,18 @@
+:root {
+    --color-white: #FFFFFF;
+    --color-black: #0D0F12;
+    --color-gray: #363636;
+    --color-primary: #E56E92;
+}
+
 html {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 16px;
 }
 
 body {
-    background: #0D0F12;
-    color: #FFF;
+    background: var(--color-black);
+    color: var(--color-white);
     margin: 0;
     padding: 0;
 }
@@ -25,18 +32,18 @@ body {
 }
 
 .year__previous-link {
-    color: #FFF;
+    color: var(--color-white);
     text-decoration: none;
 }
 
 .year__title {
-    color: #FFF;
+    color: var(--color-white);
     margin: 1em 20px;
     text-align: center;
 }
 
 .year__next-link {
-    color: #FFF;
+    color: var(--color-white);
     text-decoration: none;
 }
 
@@ -69,7 +76,7 @@ body {
 }
 
 .month__title {
-    color: #FFFFFF;
+    color: var(--color-white);
     font-size: 1.3rem;
     margin-bottom: 5px;
     text-align: center;
@@ -108,7 +115,7 @@ body {
 }
 
 .week__number {
-    color: #363636;
+    color: var(--color-gray);
     font-size: .8rem;
     padding: 10px;
     text-align: right;
@@ -122,7 +129,7 @@ body {
 
 .day {
     align-items: center;
-    color: #FFFFFF;
+    color: var(--color-white);
     display: flex;
     height: 40px;
     justify-content: center;
@@ -145,25 +152,25 @@ body {
 }
 
 .day--weekend {
-    color: #363636;
+    color: var(--color-gray);
 }
 
 .day--today {
-    color: #0D0F12;
+    color: var(--color-black);
 }
 
 .day--holiday {
-    color: #0D0F12;
+    color: var(--color-black);
 }
 
 .day--holiday .day__background {
-    background: #E56E92;
+    background: var(--color-primary);
     border-radius: 100%;
     opacity: 1;
 }
 
 .day--today .day__background {
-    background: #FFFFFF;
+    background: var(--color-white);
     border-radius: 100%;
     opacity: 1;
 }
@@ -175,10 +182,10 @@ body {
 }
 
 .day--title:before {
-    background: #FFFFFF;
-    box-shadow: 0 0 3px #0D0F12;
+    background: var(--color-white);
+    box-shadow: 0 0 3px var(--color-black);
     border-radius: 5px;
-    color: #0D0F12;
+    color: var(--color-black);
     content: attr(data-title);
     display: block;
     opacity: 0;
